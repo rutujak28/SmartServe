@@ -125,10 +125,18 @@ export default function Settings() {
     }
   };
 
-  const generateQRUrl = () => {
-    if (!qrTableNumber) return '';
-    return `${window.location.origin}/scan/${qrTableNumber}`;
-  };
+ const generateQRUrl = () => {
+  if (!qrTableNumber) return '';
+
+  // ✅ Use your live Vercel domain when deployed, localhost during local dev
+  const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? 'https://smart-serve-three.vercel.app' // ← replace with your actual deployed app domain
+      : window.location.origin;
+
+  return `${baseUrl}/scan/${qrTableNumber}`;
+};
+
 
   if (loading) {
     return (
