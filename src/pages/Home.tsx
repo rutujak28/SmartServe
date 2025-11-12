@@ -37,7 +37,7 @@ type CategoryIconData = {
 // This is where you will replace the placeholder image URLs with your chosen images.
 const categoryIcons: Record<string, CategoryIconData> = {
   breakfast: { 
-    displayName: 'Breakfast', 
+    displayName: 'breakfast', 
     imageUrl: Breakfast,
     fallbackIcon: '🌅'
   },
