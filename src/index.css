@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Screen reader only class for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@layer base {
+  :root {
+    /* SmartServe Professional & Vibrant Color Palette - HSL Format */
+    --background: 240 14% 98%;
+    --foreground: 0 0% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
+    
+    /* Primary Accent: #7B61FF (vivid violet) */
+    --primary: 252 100% 69%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary Accent: #FF5DA2 (rose-magenta) */
+    --secondary: 333 100% 68%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Support / Freshness: #00C2A8 (aqua-teal) */
+    --accent: 169 100% 38%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Highlight / Contrast: #FFD76F (soft honey-yellow) */
+    --honey: 44 100% 71%;
+    
+    --muted: 240 17% 96%;
+    --muted-foreground: 0 0% 45%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 240 13% 91%;
+    --input: 240 13% 91%;
+    --ring: 252 100% 69%;
+    --radius: 0.75rem;
+    
+    /* Admin Portal Colors */
+    --admin-primary: 252 100% 69%;
+    --admin-secondary: 169 100% 38%;
+    --admin-success: 169 100% 38%;
+    --admin-destructive: 0 84% 60%;
+    --admin-warning: 44 100% 71%;
+    
+    /* Gradients */
+    --gradient-brand: linear-gradient(135deg, hsl(252 100% 69%), hsl(333 100% 68%));
+    --gradient-fresh: linear-gradient(135deg, hsl(169 100% 38%), hsl(252 100% 69%));
+    --gradient-base: linear-gradient(180deg, hsl(240 14% 98%), hsl(240 17% 96%));
+    --gradient-accent: linear-gradient(135deg, hsl(333 100% 68%), hsl(44 100% 71%));
+    
+    /* Custom Design Tokens */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-elegant: 0 10px 30px -10px hsl(252 100% 69% / 0.3);
+    --shadow-card: 0 4px 12px -2px hsl(169 100% 38% / 0.15);
+
+    /* Sidebar colors */
+    --sidebar-background: 240 14% 98%;
+    --sidebar-foreground: 0 0% 12%;
+    --sidebar-primary: 252 100% 69%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 17% 96%;
+    --sidebar-accent-foreground: 252 100% 69%;
+    --sidebar-border: 240 13% 91%;
+    --sidebar-ring: 252 100% 69%;
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+    
+    /* Primary Accent: #7B61FF (vivid violet - lighter in dark mode) */
+    --primary: 252 100% 75%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary Accent: #FF5DA2 (rose-magenta - lighter in dark mode) */
+    --secondary: 333 100% 75%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Support / Freshness: #00C2A8 (aqua-teal - lighter in dark mode) */
+    --accent: 169 100% 45%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Highlight / Contrast: #FFD76F (soft honey-yellow - lighter in dark mode) */
+    --honey: 44 100% 75%;
+    
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+    
+    --destructive: 0 84% 70%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 252 100% 75%;
+    
+    /* Admin Portal Colors (dark mode) */
+    --admin-primary: 252 100% 75%;
+    --admin-secondary: 169 100% 45%;
+    --admin-success: 169 100% 45%;
+    --admin-destructive: 0 84% 70%;
+    --admin-warning: 44 100% 75%;
+    
+    /* Gradients Dark Mode */
+    --gradient-brand: linear-gradient(135deg, hsl(252 100% 75%), hsl(333 100% 75%));
+    --gradient-fresh: linear-gradient(135deg, hsl(169 100% 45%), hsl(252 100% 75%));
+    --gradient-base: linear-gradient(180deg, hsl(0 0% 8%), hsl(0 0% 10%));
+    --gradient-accent: linear-gradient(135deg, hsl(333 100% 75%), hsl(44 100% 75%));
+
+    /* Sidebar colors */
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 252 100% 75%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 252 100% 75%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 252 100% 75%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Mobile safe area support */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
