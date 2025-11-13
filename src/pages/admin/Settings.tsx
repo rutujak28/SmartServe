@@ -127,10 +127,11 @@ export default function Settings() {
 
 const generateQRUrl = () => {
   if (!qrTableNumber) return '';
-  // Use your permanent production domain
   const baseUrl = "https://smart-serve-three.vercel.app";
+  console.log("QR generated for:", qrTableNumber); // temporary line
   return `${baseUrl}/scan/${qrTableNumber}`;
 };
+
 
 
 
