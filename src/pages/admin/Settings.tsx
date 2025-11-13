@@ -129,9 +129,9 @@ export default function Settings() {
   if (!qrTableNumber) return '';
 
   // ✅ Always use the production domain
-  const baseUrl = 'https://smart-serve-three.vercel.app';
+  const baseUrl = "https://smart-serve-three.vercel.app"; // your actual domain
+return `${baseUrl}/scan/${qrTableNumber}`;
 
-  return `${baseUrl}/scan/${qrTableNumber}`;
 };
 
 
