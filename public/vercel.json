@@ -1,5 +1,7 @@
 {
-  "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/scan/(.*)", "destination": "/index.html" },
+    { "source": "/home", "destination": "/index.html" },
+    { "source": "/admin/(.*)", "destination": "/index.html" }
   ]
 }
