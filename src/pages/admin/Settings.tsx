@@ -128,14 +128,12 @@ export default function Settings() {
  const generateQRUrl = () => {
   if (!qrTableNumber) return '';
 
-  // ✅ Use your live Vercel domain when deployed, localhost during local dev
-  const baseUrl =
-    process.env.NODE_ENV === 'production'
-      ? 'https://smart-serve-three.vercel.app' // ← replace with your actual deployed app domain
-      : window.location.origin;
+  // ✅ Always use the production domain
+  const baseUrl = 'https://smart-serve-three.vercel.app';
 
   return `${baseUrl}/scan/${qrTableNumber}`;
 };
+
 
 
   if (loading) {
