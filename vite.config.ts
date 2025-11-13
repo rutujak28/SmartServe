@@ -6,78 +6,88 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: "/",   // 👈 VERY IMPORTANT FIX
+
   server: {
     host: "::",
     port: 8080,
   },
+
   plugins: [
     react(),
     mode === "development" && componentTagger(),
     VitePWA({
-      registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'robots.txt'],
+      registerType: "autoUpdate",
+      includeAssets: ["favicon.ico", "robots.txt"],
       manifest: {
-        name: 'SmartServe - Smart Canteen Ordering',
-        short_name: 'SmartServe',
-        description: 'Revolutionize your dining experience with contactless ordering',
-        theme_color: '#FF6B35',
-        background_color: '#FFFFFF',
-        display: 'standalone',
-        scope: '/',
-        start_url: '/',
-        orientation: 'portrait',
+        name: "SmartServe - Smart Canteen Ordering",
+        short_name: "SmartServe",
+        description:
+          "Revolutionize your dining experience with contactless ordering",
+        theme_color: "#FF6B35",
+        background_color: "#FFFFFF",
+        display: "standalone",
+        scope: "/",
+        start_url: "/",
+        orientation: "portrait",
         icons: [
           {
-            src: '/icon-192.png',
-            sizes: '192x192',
-            type: 'image/png',
-            purpose: 'any maskable'
+            src: "/icon-192.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "any maskable",
           },
           {
-            src: '/icon-512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable'
-          }
-        ]
+            src: "/icon-512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any maskable",
+          },
+        ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
+            handler: "CacheFirst",
             options: {
-              cacheName: 'google-fonts-cache',
+              cacheName: "google-fonts-cache",
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
+                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
               },
               cacheableResponse: {
-                statuses: [0, 200]
-              }
-            }
-          }
-        ]
+                statuses: [0, 200],
+              },
+            },
+          },
+        ],
       },
-      // Ensure no SW interference while developing to avoid stale chunks
       devOptions: {
-        enabled: false
-      }
-    })
+        enabled: false,
+      },
+    }),
   ].filter(Boolean),
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      // Force a single React instance across the app and all deps
       react: path.resolve(__dirname, "node_modules/react"),
-      "react/jsx-runtime": path.resolve(__dirname, "node_modules/react/jsx-runtime.js"),
+      "react/jsx-runtime": path.resolve(
+        __dirname,
+        "node_modules/react/jsx-runtime.js"
+      ),
       "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
-      "react-dom/client": path.resolve(__dirname, "node_modules/react-dom/client.js"),
+      "react-dom/client": path.resolve(
+        __dirname,
+        "node_modules/react-dom/client.js"
+      ),
     },
-    dedupe: ['react', 'react-dom'],
+    dedupe: ["react", "react-dom"],
   },
+
   optimizeDeps: {
-    include: ['react', 'react-dom']
-  }
+    include: ["react", "react-dom"],
+  },
 }));
